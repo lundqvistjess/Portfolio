@@ -174,8 +174,8 @@ export const processSteps = [
   },
 ];
 
-export const aboutBio = `I'm a passionate UX designer with 8+ years of experience creating intuitive, delightful digital experiences.
+export const aboutBio = `Jessica is a curious, driven UX Designer who loves turning complex problems into holistic, intuitive user experiences. She has worked across the public sector in Sweden, within government, finance, transport, media and education, covering the full product journey from discovery and user research to idea, design, and release.
 
-My approach combines rigorous research and data-driven decisions with thoughtful design that puts users first. I've worked on everything from mobile apps to complex design systems, helping teams ship products that users love.
+She's passionate about improving everyday life by putting users at the centre, applying an iterative, user-centred design process with tools like Figma and Sketch. A true team player, Jessica thrives in cross-functional collaboration and enjoys solving tough challenges together.
 
-When I'm not designing, you'll find me exploring new design tools, reading about behavioral psychology, or capturing inspiration through photography.`;
+Outside of design, she brings the same dedication to running, most recently crossing the finish line at the NYC Marathon 🏃`;
