@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#F0F0F0"/>
+  <rect x="80" y="80" width="300" height="200" fill="#6B8E23" rx="8"/>
+  <rect x="420" y="80" width="300" height="200" fill="#8AB84F" rx="8"/>
+  <rect x="80" y="320" width="300" height="200" fill="#5A7A1F" rx="8"/>
+  <rect x="420" y="320" width="300" height="200" fill="#6B8E23" opacity="0.5" rx="8"/>
+  <text x="400" y="560" font-family="Arial" font-size="24" fill="#4D4D4D" text-anchor="middle" font-weight="bold">Design System</text>
+</svg>
