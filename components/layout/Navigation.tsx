@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { navigationItems, DESIGNER_NAME } from '@/lib/constants';
-import Container from '@/components/ui/Container';
+
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,8 +27,7 @@ const Navigation = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/95 backdrop-blur-sm">
-      <Container>
-        <nav ref={menuRef} className="flex items-center justify-between py-4 sm:py-5">
+        <nav ref={menuRef} className="flex w-full items-center justify-between px-8 py-4 sm:px-14 sm:py-5 lg:px-20">
           {/* Logo */}
           <Link
             href="/"
@@ -95,7 +94,7 @@ const Navigation = () => {
               transition={{ duration: 0.3 }}
               className="sm:hidden border-t border-gray-200 bg-white"
             >
-              <ul className="flex flex-col gap-4 py-4">
+              <ul className="flex flex-col gap-4 px-8 py-4">
                 {navigationItems.map((item) => {
                   const isActive = pathname === item.href;
                   return (
@@ -120,7 +119,6 @@ const Navigation = () => {
             </motion.div>
           )}
         </AnimatePresence>
-      </Container>
     </header>
   );
 };

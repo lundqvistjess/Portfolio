@@ -240,8 +240,8 @@ export const processSteps = [
   },
 ];
 
-export const aboutBio = `Jessica is a curious, driven UX Designer who loves turning complex problems into holistic, intuitive user experiences. She has worked across the public sector in Sweden, within government, finance, transport, media and education, covering the full product journey from discovery and user research to idea, design, and release.
+export const aboutBio = `I'm a curious, driven UX Designer who loves turning complex problems into holistic, intuitive user experiences. I've worked across the public sector in Sweden, within government, finance, transport, media and education, covering the full product journey from discovery and user research to idea, design, and release.
 
-She's passionate about improving everyday life by putting users at the centre, applying an iterative, user-centred design process with tools like Figma and Sketch. A true team player, Jessica thrives in cross-functional collaboration and enjoys solving tough challenges together.
+I'm passionate about improving everyday life by putting users at the centre, applying an iterative, user-centred design process with tools like Figma and Sketch. A true team player, I thrive in cross-functional collaboration and enjoy solving tough challenges together.
 
-Outside of work, she brings the same dedication to running, most recently crossing the finish line at the NYC Marathon 🏃‍♀️`;
+Outside of work, I bring the same dedication to running, most recently crossing the finish line at the NYC Marathon 🏃‍♀️`;

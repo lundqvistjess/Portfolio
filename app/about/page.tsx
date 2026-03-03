@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Container from '@/components/ui/Container';
-import Section from '@/components/ui/Section';
 import { aboutBio } from '@/lib/content';
 import { DESIGNER_EMAIL } from '@/lib/constants';
 
@@ -13,72 +11,74 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <Section spacing="lg">
-      <Container>
-        {/* Who am I Section */}
-        <div className="space-y-12">
-          <h1 className="h1">Who am I?</h1>
+    <div className="flex items-start justify-between gap-12 px-8 py-16 sm:px-14 sm:py-20 lg:px-20 lg:py-24">
+      {/* Left column */}
+      <div className="flex flex-1 flex-col gap-10">
+        <h1 className="text-5xl font-bold text-black sm:text-6xl lg:text-7xl">Who am I?</h1>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
-            {/* Text Content */}
-            <div className="space-y-6">
-              <div className="space-y-4 text-gray-600">
-                {aboutBio.split('\n\n').map((paragraph, idx) => (
-                  <p key={idx} className="leading-relaxed text-base">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-
-              {/* Contact Information */}
-              <div className="space-y-3 pt-6 border-t border-gray-300">
-                <div className="space-y-2">
-                  <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">Contact</h3>
-                  <ul className="space-y-2">
-                    <li>
-                      <a
-                        href={`mailto:${DESIGNER_EMAIL}`}
-                        className="text-gray-600 hover:text-accent-green transition-colors"
-                      >
-                        {DESIGNER_EMAIL}
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="tel:+4673-0342136"
-                        className="text-gray-600 hover:text-accent-green transition-colors"
-                      >
-                        +4673-0342136
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.linkedin.com/in/jessica-lundqvist/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-600 hover:text-accent-green transition-colors"
-                      >
-                        Connect with me!
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Image */}
-            <div className="relative h-96 rounded-lg overflow-hidden bg-gray-200">
-              <Image
-                src="/images/profile.jpg"
-                alt="Jessica Lundqvist"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
-          </div>
+        {/* Bio */}
+        <div className="space-y-8 text-gray-600 text-base leading-relaxed">
+          {aboutBio.split('\n\n').map((paragraph, idx) => {
+            const boldPhrase = 'Outside of work,';
+            if (paragraph.startsWith(boldPhrase)) {
+              return (
+                <p key={idx}>
+                  <strong className="text-black">{boldPhrase}</strong>
+                  {paragraph.slice(boldPhrase.length)}
+                </p>
+              );
+            }
+            return <p key={idx}>{paragraph}</p>;
+          })}
         </div>
-      </Container>
-    </Section>
+
+        {/* Contact */}
+        <div className="space-y-4">
+          <p className="text-lg font-semibold text-black">Don&apos;t hesitate to reach out!</p>
+          <ul className="space-y-3">
+            <li>
+              <a
+                href={`mailto:${DESIGNER_EMAIL}`}
+                className="flex items-center gap-3 text-gray-700 hover:text-accent-green transition-colors"
+              >
+                <Image src="/images/icons/email.png" alt="" width={20} height={20} />
+                {DESIGNER_EMAIL}
+              </a>
+            </li>
+            <li>
+              <a
+                href="tel:+46730342136"
+                className="flex items-center gap-3 text-gray-700 hover:text-accent-green transition-colors"
+              >
+                <Image src="/images/icons/phone.png" alt="" width={20} height={20} />
+                +4673-0342136
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/jessica-lundqvist/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-gray-700 hover:text-accent-green transition-colors"
+              >
+                <Image src="/images/icons/linkedin.png" alt="" width={20} height={20} />
+                Connect with me
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Right column — portrait photo */}
+      <div className="hidden shrink-0 sm:block">
+        <Image
+          src="/images/jessica-about.png"
+          alt="Jessica Lundqvist"
+          width={520}
+          height={650}
+          className="object-cover"
+        />
+      </div>
+    </div>
   );
 }
