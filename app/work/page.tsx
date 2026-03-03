@@ -18,7 +18,7 @@ export default function WorkPage() {
       <HeroSection
         title="Selected Projects"
         subtitle="My Work"
-        description="Research-driven design work across product, mobile, and systems — each project driven by real user needs and measurable outcomes."
+        description="A collection of work across public sector, finance, media, and transport in Sweden — from electric fleet management at Scania to corporate banking at Swedbank."
       />
 
       {/* Case Studies Grid */}

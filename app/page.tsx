@@ -20,9 +20,9 @@ export default function HomePage() {
     <>
       {/* Hero Section */}
       <HeroSection
-        subtitle="UX Designer at Netlight"
-        title="Designing products that solve real problems"
-        description="I create intuitive, delightful digital experiences through research, strategy, and thoughtful design."
+        subtitle="Hi! I'm Jessica"
+        title="I design thoughtful, user-centred products by balancing empathy, strategy, and business goals."
+        description="Senior Product Designer at Netlight, with experience across public sector, finance, media, and transport in Sweden."
         ctaButton={{
           label: 'View My Work',
           href: '/work',
