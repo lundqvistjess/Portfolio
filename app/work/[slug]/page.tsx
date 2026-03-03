@@ -1,11 +1,10 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import Section from '@/components/ui/Section';
 import Tag from '@/components/ui/Tag';
-import Button from '@/components/ui/Button';
-import HeroSection from '@/components/sections/HeroSection';
 import CaseStudyCard from '@/components/cards/CaseStudyCard';
 import { caseStudies } from '@/lib/content';
 
@@ -28,7 +27,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${study.title} | Case Study`,
+    title: `${study.title} | Jessica Lundqvist`,
     description: study.description,
   };
 }
@@ -59,6 +58,14 @@ export default async function CaseStudyPage({
       <Section spacing="sm" className="pb-0">
         <Container>
           <div className="space-y-6 sm:space-y-8">
+            {/* Back navigation */}
+            <Link
+              href="/work"
+              className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-accent-green transition-colors"
+            >
+              ← Work
+            </Link>
+
             <div className="space-y-4">
               <div className="flex gap-2 flex-wrap">
                 <Tag text={study.category} variant="accent" />
@@ -76,7 +83,7 @@ export default async function CaseStudyPage({
       {/* Featured Image */}
       <Section spacing="lg">
         <Container>
-          <div className="relative h-96 sm:h-[28rem] lg:h-[32rem] rounded-lg overflow-hidden bg-gray-200">
+          <div className="relative h-96 sm:h-[28rem] lg:h-[38rem] rounded-lg overflow-hidden bg-gray-200">
             <Image
               src={study.imageUrl}
               alt={study.title}
@@ -153,13 +160,13 @@ export default async function CaseStudyPage({
               </p>
             </div>
 
-            {/* Gallery Images */}
+            {/* Gallery Images — single column, large format */}
             {study.galleryImages.length > 0 && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+              <div className="space-y-6 mt-8">
                 {study.galleryImages.map((image, idx) => (
                   <div
                     key={idx}
-                    className="relative h-64 sm:h-72 rounded-lg overflow-hidden bg-gray-200"
+                    className="relative h-72 sm:h-96 lg:h-[28rem] rounded-lg overflow-hidden bg-gray-200"
                   >
                     <Image
                       src={image}
@@ -178,8 +185,24 @@ export default async function CaseStudyPage({
       {/* Results Section */}
       <Section spacing="lg" dark>
         <Container>
-          <div className="max-w-3xl space-y-4">
+          <div className="max-w-3xl space-y-6">
             <h2 className="h2">Results &amp; Impact</h2>
+
+            {/* Key Metrics */}
+            {study.keyMetrics && study.keyMetrics.length > 0 && (
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                {study.keyMetrics.map((metric, idx) => (
+                  <div
+                    key={idx}
+                    className="rounded-md border border-gray-200 bg-white p-4 space-y-1"
+                  >
+                    <p className="text-3xl font-bold text-gray-900">{metric.value}</p>
+                    <p className="text-sm text-gray-500">{metric.label}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
             <p className="text-gray-600 leading-relaxed text-lg">
               {study.results}
             </p>
@@ -205,7 +228,7 @@ export default async function CaseStudyPage({
           <Container>
             <div className="space-y-8">
               <h2 className="h2">Related Projects</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {relatedStudies.map((relatedStudy) => (
                   <CaseStudyCard
                     key={relatedStudy.id}

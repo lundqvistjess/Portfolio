@@ -31,6 +31,11 @@ export const caseStudies: CaseStudy[] = [
       '/images/case-studies/onboarding-02.jpg',
     ],
     relatedStudies: ['02', '03'],
+    keyMetrics: [
+      { value: '40%', label: 'Drop-off reduction' },
+      { value: '45%', label: 'More sign-ups in 3 months' },
+      { value: '60%', label: 'Faster time to complete' },
+    ],
   },
   {
     id: '02',
@@ -58,6 +63,11 @@ export const caseStudies: CaseStudy[] = [
       '/images/case-studies/dashboard-02.jpg',
     ],
     relatedStudies: ['01', '03'],
+    keyMetrics: [
+      { value: '35%', label: 'Increase in engagement' },
+      { value: '12s', label: 'Avg. task completion time' },
+      { value: '8.1', label: 'User satisfaction score' },
+    ],
   },
   {
     id: '03',
@@ -85,6 +95,11 @@ export const caseStudies: CaseStudy[] = [
       '/images/case-studies/design-system-02.jpg',
     ],
     relatedStudies: ['01', '02'],
+    keyMetrics: [
+      { value: '50+', label: 'Reusable components' },
+      { value: '50%', label: 'Faster development velocity' },
+      { value: '60%', label: 'Less design handoff time' },
+    ],
   },
   {
     id: '04',
@@ -109,6 +124,11 @@ export const caseStudies: CaseStudy[] = [
     imageUrl: '/images/case-studies/checkout-hero.jpg',
     galleryImages: [],
     relatedStudies: ['01'],
+    keyMetrics: [
+      { value: '28%', label: 'Conversion rate increase' },
+      { value: '20%', label: 'Lower cart abandonment' },
+      { value: '3 min', label: 'Avg. checkout time' },
+    ],
   },
 ];
 

@@ -6,9 +6,9 @@ import HeroSection from '@/components/sections/HeroSection';
 import { caseStudies } from '@/lib/content';
 
 export const metadata: Metadata = {
-  title: 'Work | Case Studies',
+  title: 'Work | Jessica Lundqvist',
   description:
-    'Explore my portfolio of UX design case studies and projects.',
+    'Selected UX design projects — exploring complex challenges, research-driven decisions, and meaningful outcomes.',
 };
 
 export default function WorkPage() {
@@ -16,14 +16,15 @@ export default function WorkPage() {
     <>
       {/* Hero Section */}
       <HeroSection
-        title="My Work"
-        description="A collection of projects where I've tackled complex design challenges and created meaningful user experiences."
+        title="Selected Projects"
+        subtitle="My Work"
+        description="Research-driven design work across product, mobile, and systems — each project driven by real user needs and measurable outcomes."
       />
 
       {/* Case Studies Grid */}
       <Section spacing="lg">
         <Container>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {caseStudies.map((study) => (
               <CaseStudyCard
                 key={study.id}

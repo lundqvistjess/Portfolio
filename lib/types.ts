@@ -21,6 +21,7 @@ export type CaseStudy = {
   imageUrl: string;
   galleryImages: string[];
   relatedStudies: string[];
+  keyMetrics?: Array<{ value: string; label: string }>;
 };
 
 // Navigation

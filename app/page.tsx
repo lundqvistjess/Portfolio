@@ -8,9 +8,9 @@ import { caseStudies, skills, tools, processSteps, aboutBio } from '@/lib/conten
 import { DESIGNER_EMAIL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'UX Designer | Home',
+  title: 'Jessica Lundqvist | UX Design & Leadership',
   description:
-    'Professional UX designer showcasing case studies, process, and expertise in product design and user experience.',
+    'UX Designer at Netlight, creating intuitive digital experiences through research, strategy, and thoughtful design.',
 };
 
 const featured = caseStudies.filter((study) => study.featured).slice(0, 3);
@@ -20,7 +20,7 @@ export default function HomePage() {
     <>
       {/* Hero Section */}
       <HeroSection
-        subtitle="Welcome to my portfolio"
+        subtitle="UX Designer at Netlight"
         title="Designing products that solve real problems"
         description="I create intuitive, delightful digital experiences through research, strategy, and thoughtful design."
         ctaButton={{

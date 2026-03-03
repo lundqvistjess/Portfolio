@@ -62,7 +62,7 @@ const Footer = () => {
           {/* Social Links */}
           <div>
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-4">
-              Follow
+              Connect
             </h3>
             <ul className="flex gap-4">
               {socialLinks.map((link) => (
@@ -85,7 +85,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <p className="text-sm text-gray-600">
-            © {currentYear}. All rights reserved.
+            © {currentYear} Jessica Lundqvist
           </p>
           <p className="text-sm text-gray-500">
             Crafted with care using Next.js &amp; Tailwind CSS

@@ -3,13 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import Card from '@/components/ui/Card';
-import Tag from '@/components/ui/Tag';
-import Button from '@/components/ui/Button';
 import type { CaseStudyCardProps } from '@/lib/types';
 
-const CaseStudyCard = React.forwardRef<HTMLDivElement, CaseStudyCardProps>(
+const CaseStudyCard = React.forwardRef<HTMLAnchorElement, CaseStudyCardProps>(
   (
     {
       title,
@@ -22,65 +18,47 @@ const CaseStudyCard = React.forwardRef<HTMLDivElement, CaseStudyCardProps>(
     },
     ref
   ) => {
+    const category = tags[0];
+
     return (
-      <Card
+      <Link
         ref={ref}
-        className={className}
-        hoverEffect={!featured}
+        href={href}
+        className={`group block rounded-md border border-gray-200 bg-white overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] ${className ?? ''}`}
       >
-        <div className={featured ? 'space-y-4' : 'space-y-3'}>
-          {/* Image */}
-          <div className={`relative overflow-hidden rounded-md ${featured ? 'h-64 sm:h-72' : 'h-48'} bg-gray-100`}>
-            <motion.div
-              className="w-full h-full"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Image
-                src={imageUrl}
-                alt={title}
-                fill
-                className="object-cover"
-                sizes={featured ? '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw' : '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'}
-              />
-            </motion.div>
+        {/* Image */}
+        <div className={`relative overflow-hidden bg-gray-100 ${featured ? 'h-72 sm:h-80' : 'h-56'}`}>
+          <div className="w-full h-full transition-transform duration-300 group-hover:scale-105">
+            <Image
+              src={imageUrl}
+              alt={title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
           </div>
 
-          {/* Content */}
-          <div className="space-y-2">
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2">
-              {tags.map((tag) => (
-                <Tag
-                  key={tag}
-                  text={tag}
-                  variant="default"
-                />
-              ))}
-            </div>
-
-            {/* Title */}
-            <h3 className={featured ? 'h3' : 'h4'}>
-              {title}
-            </h3>
-
-            {/* Description */}
-            <p className={`text-gray-600 ${featured ? 'line-clamp-3' : 'line-clamp-2'}`}>
-              {description}
-            </p>
-          </div>
-
-          {/* CTA Button */}
-          <Button
-            variant="secondary"
-            size={featured ? 'md' : 'sm'}
-            href={href}
-            className="w-full"
-          >
-            View Case Study
-          </Button>
+          {/* Category overlay */}
+          {category && (
+            <span className="absolute top-3 left-3 px-2.5 py-1 text-xs font-medium bg-white/85 backdrop-blur-sm rounded text-gray-800">
+              {category}
+            </span>
+          )}
         </div>
-      </Card>
+
+        {/* Content */}
+        <div className={`${featured ? 'p-5' : 'p-4'} space-y-2`}>
+          <h3 className={`transition-colors duration-200 group-hover:text-accent-green ${featured ? 'h3' : 'h4'}`}>
+            {title}
+          </h3>
+          <p className={`text-gray-600 ${featured ? 'line-clamp-3' : 'line-clamp-2'}`}>
+            {description}
+          </p>
+          <p className="text-accent-green text-sm font-medium pt-1">
+            View Project →
+          </p>
+        </div>
+      </Link>
     );
   }
 );

@@ -6,9 +6,9 @@ import { aboutBio } from '@/lib/content';
 import { DESIGNER_EMAIL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'About | Get to Know Me',
+  title: 'About | Jessica Lundqvist',
   description:
-    'Learn more about my background, skills, and approach to design.',
+    'Learn more about Jessica Lundqvist — UX Designer at Netlight, background, skills, and approach to design.',
 };
 
 export default function AboutPage() {

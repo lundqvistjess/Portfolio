@@ -1,18 +1,34 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { navigationItems, DESIGNER_NAME } from '@/lib/constants';
 import Container from '@/components/ui/Container';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isOpen]);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/95 backdrop-blur-sm">
       <Container>
-        <nav className="flex items-center justify-between py-4 sm:py-5">
+        <nav ref={menuRef} className="flex items-center justify-between py-4 sm:py-5">
           {/* Logo */}
           <Link
             href="/"
@@ -24,17 +40,25 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <ul className="hidden sm:flex items-center gap-8">
-            {navigationItems.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="text-gray-600 hover:text-accent-green transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-green rounded-sm"
-                  target={item.target}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {navigationItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    aria-current={isActive ? 'page' : undefined}
+                    className={`transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-green rounded-sm ${
+                      isActive
+                        ? 'text-accent-green font-semibold'
+                        : 'text-gray-600 hover:text-accent-green'
+                    }`}
+                    target={item.target}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
 
           {/* Mobile Menu Button */}
@@ -72,18 +96,26 @@ const Navigation = () => {
               className="sm:hidden border-t border-gray-200 bg-white"
             >
               <ul className="flex flex-col gap-4 py-4">
-                {navigationItems.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className="block text-gray-600 hover:text-accent-green transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-green rounded-sm"
-                      target={item.target}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
+                {navigationItems.map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
+                        aria-current={isActive ? 'page' : undefined}
+                        className={`block transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-green rounded-sm ${
+                          isActive
+                            ? 'text-accent-green font-semibold'
+                            : 'text-gray-600 hover:text-accent-green'
+                        }`}
+                        target={item.target}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </motion.div>
           )}
